@@ -118,7 +118,7 @@
                                 <a href="#" data-toggle="modal" th:attr="data-target='#dialog' + ${feedPost.getId()}">
                                     <img title="Rate this food!" class="img-responsive thumbnail img-box" style="margin-top: 10px" th:src="${feedPost.getImgUrl()}" src="/images/man_cooking.jpg" alt="Image"/>
                                 </a>
-                                <!--  Modal content for posted image -->
+                <!--  Modal content for posted image -->
                                 <div th:id="${'dialog' + feedPost.getId()}" class="modal fade dialog1" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -149,20 +149,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="pad-ver">
-                                <span>Taste</span>
-                                <span>Difficulty</span>
-                                <span>Cost</span>
-                            </div>
-                            <div class="pad-ver">
-                                <span class="tag tag-sm"><i class="fa fa-heart text-danger"></i><span class="tag-sm" th:text="${' ' + feedPost.getLikeCounter() + ' Likes'}"> 250 Likes</span></span>
-                                <div class="btn-group">
-                                    <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-                                    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+
+                <!-- Rating stars display -->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-right">Taste: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">Difficulty: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-left">Cost: <div class="glyphicon glyphicon-star">4.2</div></div>
                                 </div>
                             </div>
-
-
 
                <!-- Comments display -->
                             <div class="media-block pad-all">
