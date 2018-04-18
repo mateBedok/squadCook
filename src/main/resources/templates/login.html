@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>squadCOOK</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/icon.png"/>
+
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/loginCss.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ultra"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ribeye"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div th:replace="login_header :: copy"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 login-pictogram">
+            <img th:src="${'images/chef_2.png'}"/>
+        </div>
+        <div class="col-md-5" style="
+                    margin-top: 100px">
+            <div class="panel panel-white post panel-shadow">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <h2>Create a new account</h2>
+
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-3 control-label">First name</label>
+                            <div class="col-sm-7">
+                                <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus="autofocus"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="col-sm-3 control-label">Last name</label>
+                            <div class="col-sm-7">
+                                <input type="text" id="lastName" placeholder="Last Name" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-7">
+                                <input type="email" id="username" name="username" placeholder="Email" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-7">
+                                <input type="password" id="password" name="password" placeholder="Password" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                            <div class="col-sm-7">
+                                <input type="date" id="birthDate" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Gender</label>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="gender" id="femaleRadio" value="Female"/>Female
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="gender" id="maleRadio" value="Male"/>Malee
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"/>I accept <a href="#">terms</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div> <!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button type="submit" class="btn btn-sm btn-default btn-hover-primary">
+                                    <div class="ribeye register-btn">Register</div>
+                                </button>
+                            </div>
+                        </div>
+                    </form> <!-- /form -->
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+
+
+.affix-top,.affix{
+    position: static;
+}
+
+@media (min-width: 979px) {
+    #sidebar.affix-top {
+        position: static;
+        margin-top:30px;
+        width:150px;
+    }
+
+    #sidebar.affix-bottom {
+        position: relative;
+    }
+
+    #sidebar.affix {
+        position: fixed;
+        top:70px;
+        width:150px;
+    }
+}
+
+.lefSideBarMenu {
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+
+a {
+    color: #5d5959;
+}
+
+.sidebar-img {
+    height: 20px;
+    width: 23px;
+}

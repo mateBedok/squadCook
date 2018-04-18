@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+
+<div th:fragment="copy">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-squad" th:href="@{/}"><img src="images/icon.png" width="25" height="25"/></a>
+                <a class="navbar-brand navbar-squad" th:href="@{/}"><div class="ribeye">squadCOOK </div></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><div class="ribeye home-navbar"><img class="img-circle" height="25" width="25" th:src="${profileImage}"/><span class="header-username" th:text="${'  ' + userFullName }">Chuck Norris</span></div></a></li>
+                    <li><a href="/"><div class="ribeye home-navbar"><img class="home-pot" src="images/pot_2.png" width="15" height="15"/> Home</div></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/settings"><div class="ribeye sub-menu-navbar"><img class="home-pot" src="images/settings.png" width="15" height="15"/> Settings</div></a></li>
+                            <li><a href="/profile_page"><div class="ribeye sub-menu-navbar"><img class="home-pot" src="images/profile_page.png" width="15" height="15"/> Profile page</div></a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post">
+                                    <div class="ribeye sub-menu-navbar logout-sub-menu-navbar"><img class="home-pot" src="images/logout.png" width="15" height="15"/><input type="submit" class="ribeye sub-menu-navbar btn btn-link" value="Sign Out" /></div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+</body>
+</html>

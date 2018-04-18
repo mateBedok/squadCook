@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <!-- Title -->
+    <title>squadCOOK</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/icon.png"/>
+
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/mainFeedCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/loginCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/leftSideBarCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ratingCss.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ribeye"/>
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="/js/readMoreJs.js" defer=""></script>
+    <script src="/js/leftSideBarJs.js" defer=""></script>
+    <script src="/js/commentJs.js" defer=""></script>
+    <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" defer=""></script>
+    <script src="/js/uploadJs.js" defer=""></script>
+    <script src="/js/ratingJs.js" defer=""></script>
+
+</head>
+
+<body>
+
+<div th:replace="header :: copy"></div>
+<br/>
+<br/>
+<br/>
+
+<div class="container main-feed-container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="col-md-3" id="leftCol">
+
+                <div class="nav nav-stacked" id="sidebar">
+                    <div class="lefSideBarMenu"><a href="/"><img class="sidebar-img" src="images/feed.png"/> Feed</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/squads.png"/> Squads</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/message.png"/> Messages</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/picture.png"/> Photos</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/game.png"/> Games</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/event.png"/> Events</a></div>
+                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/weather.png"/> Weather</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8 bootstrap snippets">
+
+            <!-- Post on feed-->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-white post panel-shadow">
+                        <div id="post-img-container"></div>
+                        <form th:action="${'/savePost'}" method="post">
+                            <div class="panel-body">
+                                <textarea class="form-control textarea_post" name="postDescription" rows="2" placeholder="What are you thinking?"></textarea>
+                                <div class="mar-top clearfix">
+                                    <button class="btn btn-sm btn-default btn-hover-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
+                                    <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                                    <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" id="uploadButton"></a>
+                                    <a class="btn btn-trans btn-icon fa fa-file add-tooltip uploadButton" href="#"></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Post on feed END-->
+
+            <div class="row" th:each="feedPost,iterStat : ${posts}">
+                <!-- Displaying posts-->
+                <div class="col-md-8">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="panel-body">
+                            <div class="media-block pad-all">
+                                <a class="media-left" href="#"><img class="img-circle img-sm img-box circle" alt="Profile Picture" th:src="${feedPost.getPostedBy().getProfileImage()}" src="http://i.pravatar.cc/80"/></a>
+                                <div class="media-body">
+                                    <div class="mar-btm">
+                                        <a href="#" class="btn-link text-semibold media-heading box-inline" th:text="${feedPost.getPostedBy().getFirstName() + ' ' + feedPost.getPostedBy().getLastName()}">John Doe</a>
+                                        <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="description more-data item text-justify" id="moreData" th:text="${feedPost.getDescription()}">Lorem ipsum dolor sit amet.</div>
+
+                            <div id="postImage" th:if="${feedPost.getImgUrl()}">
+                                <a href="#" data-toggle="modal" th:attr="data-target='#dialog' + ${feedPost.getId()}">
+                                    <img title="Rate this food!" class="img-responsive thumbnail img-box" style="margin-top: 10px" th:src="${feedPost.getImgUrl()}" src="/images/man_cooking.jpg" alt="Image"/>
+                                </a>
+                                <!--  Modal content for posted image -->
+                                <div th:id="${'dialog' + feedPost.getId()}" class="modal fade dialog1" tabindex="-1">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <h2>Rate this food! <small>Hover and click on a star</small></h2>
+                                                    </div>
+
+                                                    <div class="row lead">
+                                                        <span>Taste: <span id="taste" class="starrr" data-rating='1'></span>  You gave a rating of <span id="tasteCount">0</span> star(s)</span>
+                                                    </div>
+
+                                                    <div class="row lead">
+                                                        <span>Difficulty: <span id="difficulty" class="starrr" data-rating='1'></span>You gave a rating of <span id="difficultyCount">0</span> star(s)</span>
+                                                    </div>
+
+                                                    <div class="row lead">
+                                                        <span>Cost: <span id="cost" class="starrr" data-rating='1'></span>You gave a rating of <span id="costCount">3</span> star(s)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body active">
+                                                <img th:src="${feedPost.getImgUrl()}" class="img-responsive img-rounded center-block img-box" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pad-ver">
+                                <span>Taste</span>
+                                <span>Difficulty</span>
+                                <span>Cost</span>
+                            </div>
+                            <div class="pad-ver">
+                                <span class="tag tag-sm"><i class="fa fa-heart text-danger"></i><span class="tag-sm" th:text="${' ' + feedPost.getLikeCounter() + ' Likes'}"> 250 Likes</span></span>
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                                    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                                </div>
+                            </div>
+
+
+
+               <!-- Comments display -->
+                            <div class="media-block pad-all">
+                                <div class="media-body">
+                                    <div th:if="${comments}">
+
+                                        <div class="media-block pad-all" th:each="comment,iterStat : ${comments}">
+
+                                            <div th:if="${comment.getMainFeedPost().getId() == feedPost.getId()}">
+                                                <hr/>
+                                                <div style="margin-bottom: 12px;padding-left: 50px;">
+                                                    <a class="media-left" href="#"><img class="img-circle img-sm img-box circle" alt="Profile Picture" th:src="${comment.getCommentedBy().getProfileImage()}"/></a>
+                                                    <div class="media-body">
+                                                        <div class="mar-btm">
+                                                            <a href="#" class="btn-link text-semibold media-heading box-inline" th:text="${comment.getCommentedBy().getFirstName() + ' ' + comment.getCommentedBy().getLastName()}">Attila Hódi</a>
+                                                            <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 1 min ago</p>
+                                                        </div>
+                                                        <p th:text="${comment.getCommentContent()}">Looks delicious, wanna eat em all!</p>
+                                                        <div>
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                                                                <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div th:id="${'displayComment' + feedPost.getId()}"></div>
+                                    </div> <!-- End comments display -->
+                                    <hr/>
+                                    <form class="form-inline" role="form">
+                                        <input type="hidden" id="mainFeedPostId" name="mainFeedPostId" th:value="${feedPost.getId()}"/>
+                                        <div class="form-group">
+                                            <input type="hidden" id="userFullName" name="userFullName" th:value="${userFullName}"/>
+                                            <input name="commentContent" th:id="${'commentContent' + feedPost.getId()}" class="form-control" type="text" placeholder="Your comments" />
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" th:id="${feedPost.getId()}" class="btn btn-sm btn-default btn-hover-primary commentBtn">Comment</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- End comment display in media body -->
+
+                            </div>
+                        </div> <!-- End Newsfeed Content -->
+                    </div>
+                </div> <!-- Display posts end -->
+
+                <!-- Display ingredients -->
+                <div class="col-md-4">
+                    <div th:if="${feedPost.getRecipe()}" class="panel panel-white post panel-shadow">
+                        <div class="panel-body">
+                            <div class="ingredients-header text-center">Ingredients</div>
+                            <hr/>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                            <p>- 10dkg salt</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Display ingredients END -->
+
+            </div>
+        </div>
+
+        <div class="col-md-2" id="right-sidebar">
+            <h2 class="right-sidebar-header text-center"><small>Squad friends</small></h2>
+            <hr class="custom-divider"/>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+            <div><img class="img-circle img-sm img-box circle" th:src="${profileImage}"/>Mate Bedok</div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
