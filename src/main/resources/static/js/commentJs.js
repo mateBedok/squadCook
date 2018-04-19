@@ -5,7 +5,7 @@ const responseHandler = {
         $('#displayComment' + response.mainFeedPostId).append(
             '<hr/><div class="media-block pad-all" style="margin-bottom: 12px;padding-left: 50px;">\n' +
             '                                            <div>\n' +
-            '                                                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p100x100/10400046_1463829200340110_7740717001636395235_n.jpg?_nc_cat=0&oh=8cd981a225ffcfc9568c9308d00006a2&oe=5B6AE5EA"/></a>\n' +
+            '                                                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="'+ response.profileImage +'"/></a>\n' +
             '                                                <div class="media-body">\n' +
             '                                                    <div class="mar-btm">\n' +
             '                                                        <a href="#" class="btn-link text-semibold media-heading box-inline">'+ response.userFullName +'</a>\n' +
@@ -22,6 +22,7 @@ const responseHandler = {
             '                                            </div>\n' +
             '                                        </div>'
         );
+        $('.comment-textarea').val('');
     },
 
     errorSaveComment: function (response) {
@@ -39,6 +40,7 @@ function postComment(){
         let returnData = {
             "commentContent": $(commentContentId).val(),
             "mainFeedPostId": feedPostId,
+            "profileImage": $('#profileImage').val(),
             "userFullName": $("#userFullName").val()
         };
 

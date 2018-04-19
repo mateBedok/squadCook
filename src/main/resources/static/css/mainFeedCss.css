@@ -193,3 +193,22 @@ body{
 .custom-divider {
     border-bottom: 1px solid rgba(86, 86, 86, 0.38);
 }
+
+.comment-img {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-textarea {
+    border-radius: 15px;
+    width: 350px;
+}
+
+.comment-img-container {
+    padding-right: 8px;
+}
+
+.commentBtn {
+    position: fixed;
+    top: -1000px
+}
