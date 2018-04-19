@@ -95,6 +95,14 @@
                         </form>
                     </div>
                 </div>
+                <!-- ingredients Post on feed-->
+                <div class="col-md-4">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="panel-body">
+                            gimme ingredients
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Post on feed END-->
 
@@ -150,11 +158,11 @@
                                 </div>
                             </div>
 
-                <!-- Rating stars display -->
+                <!-- Rating stars and like display -->
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="like-heart like-heart-post text-center">
-                                        <i th:id="${'likePost' + feedPost.getId()}" class="far fa-heart like"></i><span th:class="${'likePost' + feedPost.getId() + ' like-counter'}">33</span>
+                                        <i th:id="${'likePost' + feedPost.getId()}" class="far fa-heart like"></i><span th:class="${'likePost' + feedPost.getId() + ' like-counter'}" th:text="${feedPost.getLikeCounter()}"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
