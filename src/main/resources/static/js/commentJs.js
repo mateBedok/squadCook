@@ -3,7 +3,7 @@ const responseHandler = {
 
     successSaveComment: function (response) {
         $('#displayComment' + response.mainFeedPostId).append(
-            '<hr/><div class="media-block pad-all" style="margin-bottom: 12px;padding-left: 50px;">\n' +
+            '<div class="media-block pad-all" style="margin-bottom: 12px;padding-left: 50px;">\n' +
             '                                            <div>\n' +
             '                                                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="'+ response.profileImage +'"/></a>\n' +
             '                                                <div class="media-body">\n' +
@@ -13,14 +13,13 @@ const responseHandler = {
             '                                                    </div>\n' +
             '                                                    <p>'+ response.commentContent + '</p>\n' +
             '                                                    <div>\n' +
-            '                                                        <div class="btn-group">\n' +
-            '                                                            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>\n' +
-            '                                                            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>\n' +
+            '                                                        <div class="like-heart">\n' +
+            '                                                           <i id="like'+ response.mainFeedPostId +'" class="far fa-heart like"></i>\n' +
             '                                                        </div>\n' +
             '                                                    </div>\n' +
             '                                                </div>\n' +
             '                                            </div>\n' +
-            '                                        </div>'
+            '                                        </div><hr/>'
         );
         $('.comment-textarea').val('');
     },

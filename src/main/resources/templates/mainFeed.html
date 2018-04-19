@@ -152,8 +152,8 @@
 
                 <!-- Rating stars display -->
                             <div class="row">
-                                <div class="col-md-2">
-                                    <div class="like-heart text-center">
+                                <div class="col-md-3">
+                                    <div class="like-heart like-heart-post text-center">
                                         <i th:id="${'likePost' + feedPost.getId()}" class="far fa-heart like"></i><span th:class="${'likePost' + feedPost.getId() + ' like-counter'}">33</span>
                                     </div>
                                 </div>
@@ -167,16 +167,15 @@
                                     <div class="text-center">Cost: <div class="glyphicon glyphicon-star">4.2</div></div>
                                 </div>
                             </div>
-
+                            <hr class="custom-divider"/>
                <!-- Comments display -->
                             <div class="media-block pad-all">
                                 <div class="media-body">
                                     <div th:if="${comments}">
 
-                                        <div class="media-block pad-all" th:each="comment,iterStat : ${comments}">
+                                        <div class="kek" th:each="comment,iterStat : ${comments}">
 
                                             <div th:if="${comment.getMainFeedPost().getId() == feedPost.getId()}">
-                                                <hr/>
                                                 <div style="margin-bottom: 12px;padding-left: 50px;">
                                                     <a class="media-left" href="#"><img class="img-circle img-sm img-box circle" alt="Profile Picture" th:src="${comment.getCommentedBy().getProfileImage()}"/></a>
                                                     <div class="media-body">
@@ -192,11 +191,12 @@
 
                                                     </div>
                                                 </div>
+                                                <hr/>
                                             </div>
+
                                         </div>
                                         <div th:id="${'displayComment' + feedPost.getId()}"></div>
                                     </div> <!-- End comments display -->
-                                    <hr/>
                                     <form class="form-inline" role="form">
                                         <input type="hidden" id="mainFeedPostId" name="mainFeedPostId" th:value="${feedPost.getId()}"/>
                                         <div class="form-group">
