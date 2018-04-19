@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ribeye"/>
 
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"/>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -47,6 +47,7 @@
     <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" defer=""></script>
     <script src="/js/uploadJs.js" defer=""></script>
     <script src="/js/ratingJs.js" defer=""></script>
+    <script src="/js/likeJs.js" defer=""></script>
 
 </head>
 
@@ -107,7 +108,7 @@
                                 <div class="media-body">
                                     <div class="mar-btm">
                                         <a href="#" class="btn-link text-semibold media-heading box-inline" th:text="${feedPost.getPostedBy().getFirstName() + ' ' + feedPost.getPostedBy().getLastName()}">John Doe</a>
-                                        <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
+                                        <p class="text-muted text-sm"><i class="fas fa-mobile-alt"></i> - From Mobile - 11 min ago</p>
                                     </div>
                                 </div>
                             </div>
@@ -151,14 +152,19 @@
 
                 <!-- Rating stars display -->
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="text-right">Taste: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                <div class="col-md-2">
+                                    <div class="like-heart text-center">
+                                        <i th:id="${'likePost' + feedPost.getId()}" class="far fa-heart like"></i><span th:class="${'likePost' + feedPost.getId() + ' like-counter'}">33</span>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="text-center">Difficulty: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                <div class="col-md-3">
+                                    <div class="text-center">Taste: <div class="glyphicon glyphicon-star">4.2</div></div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="text-left">Cost: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                <div class="col-md-3">
+                                    <div class="text-center">Diff: <div class="glyphicon glyphicon-star">4.2</div></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-center">Cost: <div class="glyphicon glyphicon-star">4.2</div></div>
                                 </div>
                             </div>
 
@@ -179,12 +185,11 @@
                                                             <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 1 min ago</p>
                                                         </div>
                                                         <p th:text="${comment.getCommentContent()}">Looks delicious, wanna eat em all!</p>
-                                                        <div>
-                                                            <div class="btn-group">
-                                                                <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-                                                                <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
-                                                            </div>
+                                                <!-- Like heart -->
+                                                        <div class="like-heart">
+                                                            <i th:id="${'like' + feedPost.getId()}" class="far fa-heart like"></i>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>

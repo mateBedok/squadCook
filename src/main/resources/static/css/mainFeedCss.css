@@ -212,3 +212,7 @@ body{
     position: fixed;
     top: -1000px
 }
+
+.like-counter {
+    padding-left: 5px;
+}
