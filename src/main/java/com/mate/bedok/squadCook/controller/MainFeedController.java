@@ -60,20 +60,22 @@ public class MainFeedController {
     //TODO ajax..
     @RequestMapping(value = "/savePost", method = RequestMethod.POST)
     public String savePost(@RequestParam Map<String, String> data, ModelMap model, HttpServletRequest request) {
-        System.out.println(data);
+
         User currentUser = userService.getUserByEmail(request.getUserPrincipal().getName());
         String description = data.get("postDescription");
+        String recipe = data.get("ingredientsContent");
 
         MainFeedPost feedPost = mainFeedPostService.getUnfinishedFeedPost(currentUser);
         //TODO empty post handling
-        if (description.equals("") || feedPost == null) {
+        if (description.equals("") || feedPost == null || recipe.equals("-")) {
             System.out.println("feedpost null");
             return "redirect:/";
         }
 
         feedPost.setDescription(description);
-        feedPost.setRecipe("rec");
+        feedPost.setRecipe(recipe);
         feedPost.setDateOfPost("today");
+        feedPost.setPosted(true);
         mainFeedPostService.saveMainFeedPost(feedPost);
         return "redirect:/";
 

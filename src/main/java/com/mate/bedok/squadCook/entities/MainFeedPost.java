@@ -1,6 +1,8 @@
 package com.mate.bedok.squadCook.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -115,5 +117,23 @@ public class MainFeedPost {
 
     public void setRecipe(String recipe) {
         this.recipe = recipe;
+    }
+
+    public boolean isPosted() {
+        return posted;
+    }
+
+    public void setPosted(boolean posted) {
+        this.posted = posted;
+    }
+
+    public List<String> getSeparatedIngredients(String recipe) {
+        List<String> recipeList = new ArrayList<>();
+        String newRec = recipe.replaceAll("-", "");
+        String lines[] = newRec.split("\\r?\\n");
+
+        Collections.addAll(recipeList, lines);
+
+        return recipeList;
     }
 }

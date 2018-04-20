@@ -48,6 +48,7 @@
     <script src="/js/uploadJs.js" defer=""></script>
     <script src="/js/ratingJs.js" defer=""></script>
     <script src="/js/likeJs.js" defer=""></script>
+    <script src="/js/ingredientsJs.js" defer=""></script>
 
 </head>
 
@@ -79,30 +80,33 @@
 
             <!-- Post on feed-->
             <div class="row">
-                <div class="col-md-8">
-                    <div class="panel panel-white post panel-shadow">
-                        <div id="post-img-container"></div>
-                        <form th:action="${'/savePost'}" method="post">
-                            <div class="panel-body">
-                                <textarea class="form-control textarea_post" name="postDescription" rows="2" placeholder="What are you thinking?"></textarea>
-                                <div class="mar-top clearfix">
-                                    <button class="btn btn-sm btn-default btn-hover-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
-                                    <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
-                                    <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" id="uploadButton"></a>
-                                    <a class="btn btn-trans btn-icon fa fa-file add-tooltip uploadButton" href="#"></a>
+                <form th:action="${'/savePost'}" method="post">
+                    <div class="col-md-8">
+                        <div class="panel panel-white post panel-shadow">
+                            <div id="post-img-container"></div>
+
+                                <div class="panel-body">
+                                    <textarea class="form-control textarea_post" name="postDescription" rows="2" placeholder="What are you thinking?"></textarea>
+                                    <div class="mar-top clearfix">
+                                        <button class="btn btn-sm btn-default btn-hover-primary pull-right" type="submit"><i class="far fa-share-square"></i> Share</button>
+                                        <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                                        <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" id="uploadButton"></a>
+                                        <a class="btn btn-trans btn-icon fa fa-file add-tooltip uploadButton" href="#"></a>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- ingredients Post on feed-->
-                <div class="col-md-4">
-                    <div class="panel panel-white post panel-shadow">
-                        <div class="panel-body">
-                            gimme ingredients
+
                         </div>
                     </div>
-                </div>
+                    <!-- ingredients Post on feed-->
+                    <div class="col-md-4">
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="panel-body">
+                                <label for="ingredientsContent">What are the ingredients?</label>
+                                <textarea class="form-control textarea_post" name="ingredientsContent" id="ingredientsContent" rows="3" placeholder="What are the ingredients?">- </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- Post on feed END-->
 
@@ -230,13 +234,9 @@
                         <div class="panel-body">
                             <div class="ingredients-header text-center">Ingredients</div>
                             <hr/>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
-                            <p>- 10dkg salt</p>
+                            <ul>
+                                <li class="ingredientsDisplay" th:each="ingredient,iterStat : ${feedPost.getSeparatedIngredients(feedPost.getRecipe())}" th:text="${ingredient}"></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
