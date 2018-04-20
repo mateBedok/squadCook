@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <!-- Title -->
+    <title>squadCOOK</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/icon.png"/>
+
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/mainFeedCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/loginCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/leftSideBarCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/squadCardCss.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ribeye"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="/js/leftSideBarJs.js" defer=""></script>
+    <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" defer=""></script>
+    <script src="/js/uploadJs.js" defer=""></script>
+
+</head>
+<body>
+
+<div th:replace="header :: copy"></div>
+<br/>
+<br/>
+<br/>
+
+<div class="container main-feed-container">
+    <div class="row">
+        <!-- Left sidebar-->
+        <div th:replace="leftSideBar :: copy"></div>
+        <div class="col-md-3">
+
+
+
+            <div class="content-profile-page">
+                <div class="my-profile-page card">
+                    <div class="img-profile">
+                        <div class="profile-bg" style="background-image: url(http://i.imgur.com/jQgJQbk.jpg)">
+                        </div>
+                        <img class="avatar" src="/images/csakany_profile.jpg" alt="profilpic"/>
+                    </div>
+                    <div class="profile-data">
+                        <h1>FIÓKLAKÓK</h1>
+                        <p>Kápi szétbaszós geng</p>
+                        <button>Follow</button>
+                    </div>
+                    <hr class="squad-card-divider"/>
+                    <ul class="follow">
+                        <li class="leftfollow"><a><strong>3320</strong>Following</a></li>
+                        <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="content-profile-page">
+                <div class="my-profile-page card">
+                    <div class="img-profile">
+                        <div class="profile-bg" style="background-image: url(http://www.icebergwatereurope.com/wp-content/uploads/2013/02/iceberg-7560701.jpg)">
+                        </div>
+                        <img class="avatar" src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" alt="profilpic"/>
+                    </div>
+                    <div class="profile-data">
+                        <h1>FIÓKLAKÓK</h1>
+                        <p>Kápi szétbaszós geng</p>
+                        <button>Follow</button>
+                    </div>
+                    <hr class="squad-card-divider"/>
+                    <ul class="follow">
+                        <li class="leftfollow"><a><strong>3320</strong>Following</a></li>
+                        <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

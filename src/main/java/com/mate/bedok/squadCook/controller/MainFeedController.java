@@ -111,6 +111,18 @@ public class MainFeedController {
         return "chatBox";
     }
 
+    @RequestMapping(value = "/discover_squads", method = RequestMethod.GET)
+    public String discoverSquads(Model model, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.getUserByEmail(email);
+        String userFullName = user.getFirstName()+ " " +user.getLastName();
+
+        model.addAttribute("userName", user.getUserName());
+        model.addAttribute("userFullName", userFullName);
+        model.addAttribute("profileImage", user.getProfileImage());
+        return "discoverSquads";
+    }
+
     @RequestMapping(value = "/profile_page", method = RequestMethod.GET)
     public String profilePage(Model model, HttpServletRequest request) {
 
