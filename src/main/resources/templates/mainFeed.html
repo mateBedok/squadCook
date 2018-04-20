@@ -61,24 +61,8 @@
 
 <div class="container main-feed-container">
     <div class="row">
-        <div class="col-md-2">
-            <div class="col-md-3" id="leftCol">
-
-                <div class="nav nav-stacked" id="sidebar">
-                    <div class="lefSideBarMenu"><a href="/"><img class="sidebar-img" src="images/feed.png"/> Feed</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/squads.png"/> Squads</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/message.png"/> Messages</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/picture.png"/> Photos</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/game.png"/> Games</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/event.png"/> Events</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/weather.png"/> Weather</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/weather.png"/> Weather</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/weather.png"/> Weather</a></div>
-                    <div class="lefSideBarMenu"><a href="#"><img class="sidebar-img" src="images/weather.png"/> Weather</a></div>
-                </div>
-
-            </div>
-        </div>
+        <!-- Left sidebar-->
+        <div th:replace="leftSideBar :: copy"></div>
         <div class="col-md-8 bootstrap snippets">
 
             <!-- Post on feed-->
@@ -254,37 +238,7 @@
 
         </div>
 
-        <div class="col-md-2" id="right-sidebar">
-            <h2 class="right-sidebar-header text-center"><small>Squad friends</small></h2>
-            <hr class="custom-divider"/>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedokfffff fffffffffff ffffffffffff</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-            <div class="img-message-container"><img class="img-circle img-sm img-message circle" th:src="${profileImage}"/> Mate Bedok</div>
-
-
-        </div>
+        <div th:replace="rightMessengerBar :: copy"></div>
 
     </div>
 </div>

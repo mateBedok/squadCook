@@ -110,4 +110,10 @@ public class MainFeedController {
 
         return "chatBox";
     }
+
+    @RequestMapping(value = "/profile_page", method = RequestMethod.GET)
+    public String profilePage(Model model, HttpServletRequest request) {
+
+        return "profilePage";
+    }
 }
