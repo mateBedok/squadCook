@@ -104,4 +104,10 @@ public class MainFeedController {
         return "403";
 
     }
+
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
+    public String chatBox(Model model, HttpServletRequest request) {
+
+        return "chatBox";
+    }
 }

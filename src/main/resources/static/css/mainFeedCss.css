@@ -180,6 +180,8 @@ body{
     background-color: #e9ebee;
     border-left: 1px solid rgba(86, 86, 86, 0.38);
     height: 100%;
+    overflow-y: scroll;
+    overflow-x:hidden;
     position: fixed;
     right: 0;
     top: 0;
@@ -223,4 +225,46 @@ body{
 
 .like:hover {
     color: rgba(255,0,20,0.53);
+}
+
+.ingr-outer {
+    list-style: none;
+    padding: 0;
+}
+.ingredientsDisplay {
+    padding-left: 1.3em;
+    padding-bottom: 8px;
+}
+.ingredientsDisplay:before {
+    content: "\f138"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
+}
+
+.img-message {
+    width: 25px;
+    height: auto;
+
+}
+
+.img-message-container {
+    padding-bottom: 10px;
+}
+
+.spinner {
+    width: 5rem;
+    height: 5rem;
+    border: 0.6rem solid #999;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
 }
