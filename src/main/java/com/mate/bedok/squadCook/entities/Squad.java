@@ -15,6 +15,8 @@ public class Squad {
     private String squadDescription;
     private String squadImage;
 
+    //private Set<User> admins;
+
     @ManyToMany(mappedBy = "squads")
     private Set<User> members;
 

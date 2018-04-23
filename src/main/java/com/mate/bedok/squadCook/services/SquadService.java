@@ -21,4 +21,8 @@ public class SquadService {
     public List<Squad> getAllSquads() {
         return sr.findAll();
     }
+
+    public void requestJoin() {
+        //TODO requestJoin
+    }
 }

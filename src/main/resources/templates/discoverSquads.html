@@ -72,8 +72,9 @@
                         <div class="profile-data">
                             <h1 th:text="${squad.getSquadName()}"></h1>
                             <p th:text="${squad.getSquadDescription()}"></p>
-                            <button>Join</button>
-                            <button>Follow</button>
+                            <button class="joined-button" th:if="${joinedSquads.contains(squad)}">Joined</button>
+                            <button class="join-button" th:unless="${joinedSquads.contains(squad)}">Join</button>
+                            <button class="join-button">Follow</button>
                         </div>
                         <hr class="squad-card-divider"/>
                         <ul class="follow">

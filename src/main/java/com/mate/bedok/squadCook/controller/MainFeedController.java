@@ -108,6 +108,13 @@ public class MainFeedController {
         return "profilePage";
     }
 
+    @RequestMapping(value = "/requestSquadJoin", method = RequestMethod.POST)
+    @ResponseBody
+    public String requestSquadJoin(@RequestBody Map<String, String> commentData, HttpServletRequest request) {
+        squadService.requestJoin();
+        return "success";
+    }
+
     // model
 
     private void addModelInfoToDiscoverSquads(Model model, HttpServletRequest request) {
@@ -116,6 +123,7 @@ public class MainFeedController {
 
         model.addAttribute("userFullName", userFullName);
         model.addAttribute("profileImage", user.getProfileImage());
+        model.addAttribute("joinedSquads", user.getSquads());
     }
 
     private void addModelInfoToIndexPage(Model model, HttpServletRequest request) {
