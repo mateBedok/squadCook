@@ -1,13 +1,7 @@
 package com.mate.bedok.squadCook.Utils;
 
-import com.mate.bedok.squadCook.entities.Comment;
-import com.mate.bedok.squadCook.entities.MainFeedPost;
-import com.mate.bedok.squadCook.entities.Squad;
-import com.mate.bedok.squadCook.entities.User;
-import com.mate.bedok.squadCook.services.CommentService;
-import com.mate.bedok.squadCook.services.MainFeedPostService;
-import com.mate.bedok.squadCook.services.SquadService;
-import com.mate.bedok.squadCook.services.UserService;
+import com.mate.bedok.squadCook.entities.*;
+import com.mate.bedok.squadCook.services.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -16,7 +10,13 @@ import java.util.Set;
 @Component
 public class InitializerBean {
 
-    public InitializerBean(UserService us, MainFeedPostService mfs, CommentService cs, SquadService ss) {
+    public InitializerBean(
+            UserService us,
+            MainFeedPostService mfs,
+            CommentService cs,
+            SquadService ss,
+            RelationshipService rs
+    ) {
 
         User user1 = new User("Mate", "Bedok", "Maci", "mate.bedok@gmail.com", "1992-01-26", "asdasd", "2018-04-05", "https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p100x100/10400046_1463829200340110_7740717001636395235_n.jpg?_nc_cat=0&oh=8cd981a225ffcfc9568c9308d00006a2&oe=5B6AE5EA");
         MainFeedPost mainFeedPost = new MainFeedPost("Australians each eat 47 kilograms of chicken a year. Surely that's too much, not least because it's sad to see a special occasion meal relegated to cheap protein, eaten unthinkingly in nuggets and wraps, but also because few of those chooks are as delicious as the roasted chicken at Napier Quarter. Like all the meat there, it's carefully sourced and adoringly cooked, as though every bite matters, which it does.", "- one spoon caffe\n- one spoon sugar ", "https://zululandobserver.co.za/wp-content/uploads/sites/56/2017/05/fap-09.jpg", "2018-04-07", user1);
@@ -62,6 +62,20 @@ public class InitializerBean {
         mfs.saveMainFeedPost(mainFeedPost3);
         cs.initSave(comment2);
 
+        //relationship
+
+        User user3 = new User("Laci", "Kiss", "Laca", "laci.kiss@gmail.com", "1992-01-26", "asdasd", "2018-04-05", "https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p100x100/10400046_1463829200340110_7740717001636395235_n.jpg?_nc_cat=0&oh=8cd981a225ffcfc9568c9308d00006a2&oe=5B6AE5EA");
+        User user4 = new User("Feri", "Nagy", "Ferkó", "feri.nagy@gmail.com", "1992-01-26", "asdasd", "2018-04-05", "https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p100x100/10400046_1463829200340110_7740717001636395235_n.jpg?_nc_cat=0&oh=8cd981a225ffcfc9568c9308d00006a2&oe=5B6AE5EA");
+        us.saveUser(user3);
+        us.saveUser(user4);
+
+        Relationship relationship1 = new Relationship(user1, user2);
+        Relationship relationship2 = new Relationship(user1, user3);
+        Relationship relationship3 = new Relationship(user2, user3);
+
+        rs.save(relationship1);
+        rs.save(relationship2);
+        rs.save(relationship3);
 
     }
 }
