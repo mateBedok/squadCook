@@ -7,6 +7,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Objects;
 
@@ -26,6 +27,10 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return ur.getUserByEmail(email);
+    }
+
+    public User getCurrentUser(HttpServletRequest request) {
+        return getUserByEmail(request.getUserPrincipal().getName());
     }
 
 }

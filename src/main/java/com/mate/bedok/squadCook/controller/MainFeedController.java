@@ -33,21 +33,7 @@ public class MainFeedController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexPageView(Model model, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.getUserByEmail(email);
-        String userFullName = user.getFirstName()+ " " +user.getLastName();
-
-        model.addAttribute("userName", user.getUserName());
-        model.addAttribute("userFullName", userFullName);
-        model.addAttribute("posts", mainFeedPostService.getAllFeedPostsOrdered());
-        model.addAttribute("profileImage", user.getProfileImage());
-        model.addAttribute("comments", commentService.getAllComments());
-        /*if (currentUser != null) {
-            model.addAttribute("userName", currentUser.getUserName());
-            model.addAttribute("profileImage", currentUser.getProfileImage());
-            model.addAttribute("posts", mainFeedPostService.getAllFeedPosts());
-            return "mainFeed";
-        }*/
+        addModelInfoToIndexPage(model, request);
         return "mainFeed";
     }
 
@@ -61,7 +47,7 @@ public class MainFeedController {
     @RequestMapping(value = "/savePost", method = RequestMethod.POST)
     public String savePost(@RequestParam Map<String, String> data, ModelMap model, HttpServletRequest request) {
 
-        User currentUser = userService.getUserByEmail(request.getUserPrincipal().getName());
+        User currentUser = userService.getCurrentUser(request);
         String description = data.get("postDescription");
         String recipe = data.get("ingredientsContent");
 
@@ -92,40 +78,56 @@ public class MainFeedController {
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
     public String uploadFile(@RequestBody Map<String, String> data, HttpServletRequest request) {
-        System.out.println(data.get("url"));
-        User currentUser = userService.getUserByEmail(request.getUserPrincipal().getName());
+        //System.out.println(data.get("url"));
+        User currentUser = userService.getCurrentUser(request);
         MainFeedPost mainFeedPost = new MainFeedPost(data.get("url"), currentUser);
         mainFeedPostService.saveMainFeedPost(mainFeedPost);
         return "success";
     }
 
+    //test
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String error403() {
-        return "403";
+        return "403 Oopsiee";
 
     }
 
+    //TODO
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chatBox(Model model, HttpServletRequest request) {
-
         return "chatBox";
     }
 
     @RequestMapping(value = "/discover_squads", method = RequestMethod.GET)
     public String discoverSquads(Model model, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.getUserByEmail(email);
-        String userFullName = user.getFirstName()+ " " +user.getLastName();
-
-        model.addAttribute("userName", user.getUserName());
-        model.addAttribute("userFullName", userFullName);
-        model.addAttribute("profileImage", user.getProfileImage());
+        addModelInfoToDiscoverSquads(model, request);
         return "discoverSquads";
     }
 
+    //TODO
     @RequestMapping(value = "/profile_page", method = RequestMethod.GET)
     public String profilePage(Model model, HttpServletRequest request) {
 
         return "profilePage";
+    }
+
+    // model
+
+    private void addModelInfoToDiscoverSquads(Model model, HttpServletRequest request) {
+        User user = userService.getCurrentUser(request);
+        String userFullName = user.getFirstName()+ " " +user.getLastName();
+
+        model.addAttribute("userFullName", userFullName);
+        model.addAttribute("profileImage", user.getProfileImage());
+    }
+
+    private void addModelInfoToIndexPage(Model model, HttpServletRequest request) {
+        User user = userService.getCurrentUser(request);
+        String userFullName = user.getFirstName()+ " " +user.getLastName();
+
+        model.addAttribute("userFullName", userFullName);
+        model.addAttribute("posts", mainFeedPostService.getAllFeedPostsOrdered());
+        model.addAttribute("profileImage", user.getProfileImage());
+        model.addAttribute("comments", commentService.getAllComments());
     }
 }
