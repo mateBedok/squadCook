@@ -39,10 +39,10 @@ public class InitializerBean {
 
 
 
-        Squad squad = new Squad("Fiok", "Az anyad");
-        Squad squad2 = new Squad("Fiok2", "Az anyad2");
-        Squad squad3 = new Squad("Fiok3", "Az anyad3");
-        Squad squad4 = new Squad("Fiok4", "Az anyad4");
+        Squad squad = new Squad("Fiok", "Az anyad", "https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/12/31/15/friends-0.jpg");
+        Squad squad2 = new Squad("Fiok2", "Az anyad2", "http://i0.kym-cdn.com/entries/icons/mobile/000/014/591/GS5mY6x.jpg");
+        Squad squad3 = new Squad("Fiok3", "Az anyad3", "https://i.pinimg.com/originals/08/ff/ca/08ffcaef9069817768902ab630323958.jpg");
+        Squad squad4 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
 
         Set<Squad> squads = new HashSet<>();
         squads.add(squad);

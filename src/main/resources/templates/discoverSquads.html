@@ -42,7 +42,7 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
-
+    <script src="/js/leftSideBarJs.js" defer=""></script>
     <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" defer=""></script>
     <script src="/js/uploadJs.js" defer=""></script>
 
@@ -59,55 +59,59 @@
         <!-- Left sidebar-->
         <div th:replace="leftSideBar :: copy"></div>
 
-        <div class="col-md-3" th:each="squad,iterStat : ${squads}">
-            <div class="content-profile-page">
-                <div class="my-profile-page card">
-                    <div class="img-profile">
-                        <div class="profile-bg" style="background-image: url(http://i.imgur.com/jQgJQbk.jpg)">
+
+        <div class="col-md-10">
+            <div class="col-md-4" th:each="squad,iterStat : ${squads}">
+                <div class="content-profile-page">
+                    <div class="my-profile-page card">
+                        <div class="img-profile">
+                            <div class="profile-bg" style="background-image: url(http://i.imgur.com/jQgJQbk.jpg)">
+                            </div>
+                            <img class="avatar" th:src="${squad.getSquadImage()}" alt="profilpic"/>
                         </div>
-                        <img class="avatar" src="/images/csakany_profile.jpg" alt="profilpic"/>
-                    </div>
-                    <div class="profile-data">
-                        <h1 th:text="${squad.getSquadName()}"></h1>
-                        <p th:text="${squad.getSquadDescription()}"></p>
-                        <button>Join</button>
-                        <button>Follow</button>
-                    </div>
-                    <hr class="squad-card-divider"/>
-                    <ul class="follow">
-                        <li class="leftfollow"><a><strong th:text="${squad.getMembersCount()}">3320</strong>Members</a></li>
-                        <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="content-profile-page">
-                <div class="my-profile-page card">
-                    <div class="img-profile">
-                        <div class="profile-bg" style="background-image: url(http://www.icebergwatereurope.com/wp-content/uploads/2013/02/iceberg-7560701.jpg)">
+                        <div class="profile-data">
+                            <h1 th:text="${squad.getSquadName()}"></h1>
+                            <p th:text="${squad.getSquadDescription()}"></p>
+                            <button>Join</button>
+                            <button>Follow</button>
                         </div>
-                        <img class="avatar" src="/images/csakany_profile.jpg" alt="profilpic"/>
+                        <hr class="squad-card-divider"/>
+                        <ul class="follow">
+                            <li class="leftfollow"><a><strong th:text="${squad.getMembersCount()}">3320</strong>Members</a></li>
+                            <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
+                        </ul>
                     </div>
-                    <div class="profile-data">
-                        <h1>FIÓKLAKÓK</h1>
-                        <p>Kápi szétbaszós geng</p>
-                        <button>Join</button>
-                        <button>Follow</button>
-                    </div>
-                    <hr class="squad-card-divider"/>
-                    <ul class="follow">
-                        <li class="leftfollow"><a><strong>3320</strong>Members</a></li>
-                        <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
-                    </ul>
                 </div>
             </div>
 
-
-
-
+            <div class="col-md-4">
+                <div class="content-profile-page">
+                    <div class="my-profile-page card">
+                        <div class="img-profile">
+                            <div class="profile-bg" style="background-image: url(http://www.icebergwatereurope.com/wp-content/uploads/2013/02/iceberg-7560701.jpg)">
+                            </div>
+                            <img class="avatar" src="/images/csakany_profile.jpg" alt="profilpic"/>
+                        </div>
+                        <div class="profile-data">
+                            <h1>FIÓKLAKÓK</h1>
+                            <p>Kápi szétbaszós geng</p>
+                            <button>Join</button>
+                            <button>Follow</button>
+                        </div>
+                        <hr class="squad-card-divider"/>
+                        <ul class="follow">
+                            <li class="leftfollow"><a><strong>3320</strong>Members</a></li>
+                            <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
+
 </div>
 </body>
 </html>

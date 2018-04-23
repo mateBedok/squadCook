@@ -13,6 +13,7 @@ public class Squad {
 
     private String squadName;
     private String squadDescription;
+    private String squadImage;
 
     @ManyToMany(mappedBy = "squads")
     private Set<User> members;
@@ -30,9 +31,10 @@ public class Squad {
         this.followers = followers;
     }
 
-    public Squad(String squadName, String squadDescription) {
+    public Squad(String squadName, String squadDescription, String squadImage) {
         this.squadName = squadName;
         this.squadDescription = squadDescription;
+        this.squadImage = squadImage;
     }
 
     public long getSquadId() {
@@ -77,5 +79,13 @@ public class Squad {
 
     public int getMembersCount() {
         return members.size();
+    }
+
+    public String getSquadImage() {
+        return squadImage;
+    }
+
+    public void setSquadImage(String squadImage) {
+        this.squadImage = squadImage;
     }
 }
