@@ -42,6 +42,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRoleEnum userRole;
 
+    @OneToMany(mappedBy = "sentById")
+    List<Relationship> sentByRelationships;
+
+    @OneToMany(mappedBy = "sentToId")
+    List<Relationship> sentToRelationships;
 
     @OneToMany(mappedBy = "postedBy")
     List<MainFeedPost> mainFeedPosts = new ArrayList<>();
