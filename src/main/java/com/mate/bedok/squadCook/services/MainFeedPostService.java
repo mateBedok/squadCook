@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MainFeedPostService {
@@ -18,6 +19,18 @@ public class MainFeedPostService {
 
     public void saveMainFeedPost(MainFeedPost mainFeedPost) {
         mfr.save(mainFeedPost);
+    }
+
+    public void updateMainFeedPost(Map<String, String> data, MainFeedPost feedPost) {
+        String description = data.get("postDescription");
+        String recipe = data.get("ingredientsContent");
+
+        feedPost.setDescription(description);
+        feedPost.setRecipe(recipe);
+        feedPost.setDateOfPost("today");
+        feedPost.setPosted(true);
+        saveMainFeedPost(feedPost);
+
     }
 
     public List<MainFeedPost> getAllFeedPosts() {

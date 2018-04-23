@@ -43,26 +43,19 @@ public class MainFeedController {
 
     }
 
-    //TODO ajax..
+    //TODO
     @RequestMapping(value = "/savePost", method = RequestMethod.POST)
     public String savePost(@RequestParam Map<String, String> data, ModelMap model, HttpServletRequest request) {
 
         User currentUser = userService.getCurrentUser(request);
-        String description = data.get("postDescription");
-        String recipe = data.get("ingredientsContent");
-
         MainFeedPost feedPost = mainFeedPostService.getUnfinishedFeedPost(currentUser);
         //TODO empty post handling
-        if (description.equals("") || feedPost == null || recipe.equals("-")) {
+        if (data.get("postDescription").equals("") || feedPost == null || data.get("ingredientsContent").equals("-")) {
             System.out.println("feedpost null");
             return "redirect:/";
         }
 
-        feedPost.setDescription(description);
-        feedPost.setRecipe(recipe);
-        feedPost.setDateOfPost("today");
-        feedPost.setPosted(true);
-        mainFeedPostService.saveMainFeedPost(feedPost);
+        mainFeedPostService.updateMainFeedPost(data, feedPost);
         return "redirect:/";
 
     }
@@ -71,7 +64,6 @@ public class MainFeedController {
     @ResponseBody
     public String saveComment(@RequestBody Map<String, String> commentData, HttpServletRequest request) {
         commentService.save(commentData, request);
-        System.out.println(commentData.get("commentContent"));
         return "success";
     }
 
