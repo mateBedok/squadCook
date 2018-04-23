@@ -5,6 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -12,6 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private long id;
 
     private String firstName;
@@ -46,6 +48,22 @@ public class User {
 
     @OneToMany(mappedBy = "commentedBy")
     List<Comment> comments = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "User_Squad",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "squad_id") }
+    )
+    Set<Squad> squads;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "User_FollowedSquad",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "squad_id") }
+    )
+    Set<Squad> followedSquads;
 
     public User() {
     }
@@ -151,5 +169,17 @@ public class User {
 
     public void setUserRole(UserRoleEnum userRole) {
         this.userRole = userRole;
+    }
+
+    public Set<Squad> getSquads() {
+        return squads;
+    }
+
+    public void setSquads(Set<Squad> squads) {
+        this.squads = squads;
+    }
+
+    public void addSquad(Squad squad) {
+        squads.add(squad);
     }
 }

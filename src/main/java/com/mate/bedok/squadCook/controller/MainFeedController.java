@@ -3,9 +3,11 @@ package com.mate.bedok.squadCook.controller;
 import com.mate.bedok.squadCook.Utils.JSONUtil;
 import com.mate.bedok.squadCook.entities.Comment;
 import com.mate.bedok.squadCook.entities.MainFeedPost;
+import com.mate.bedok.squadCook.entities.Squad;
 import com.mate.bedok.squadCook.entities.User;
 import com.mate.bedok.squadCook.services.CommentService;
 import com.mate.bedok.squadCook.services.MainFeedPostService;
+import com.mate.bedok.squadCook.services.SquadService;
 import com.mate.bedok.squadCook.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,7 +32,7 @@ public class MainFeedController {
     private CommentService commentService;
 
     @Autowired
-    JSONUtil jsonUtil;
+    private SquadService squadService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexPageView(Model model, HttpServletRequest request) {
@@ -93,6 +96,8 @@ public class MainFeedController {
     @RequestMapping(value = "/discover_squads", method = RequestMethod.GET)
     public String discoverSquads(Model model, HttpServletRequest request) {
         addModelInfoToDiscoverSquads(model, request);
+        List<Squad> squads = squadService.getAllSquads();
+        model.addAttribute("squads", squads);
         return "discoverSquads";
     }
 
