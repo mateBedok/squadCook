@@ -50,21 +50,20 @@
 
     position: relative;
     outline: none;
-    border: 1px solid #bed9ea;
+    border: 1px solid #818283;
     border-radius: 3px;
     padding: 10px;
     font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
     cursor: pointer;
-    width: 130px;
-    background: #027eba;
+    background: #8f9294;
     color: #fff;
     transition: all .5s ease-in-out;
 }
 button:hover {
 
-    color: #027eba;
+    color: #424242;
     background: #f0f0f0;
 }
 .my-profile-page .profile-data {
