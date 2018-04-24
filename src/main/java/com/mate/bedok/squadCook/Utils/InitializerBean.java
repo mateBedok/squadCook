@@ -44,14 +44,12 @@ public class InitializerBean {
         Squad squad3 = new Squad("Fiok3", "Az anyad3", "https://i.pinimg.com/originals/08/ff/ca/08ffcaef9069817768902ab630323958.jpg");
         Squad squad4 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
 
-        Set<Squad> squads = new HashSet<>();
-        squads.add(squad);
+
         ss.saveSquad(squad);
         ss.saveSquad(squad2);
         ss.saveSquad(squad3);
         ss.saveSquad(squad4);
 
-        user1.setSquads(squads);
 
         /*user1.addSquad(squad);*/
 
@@ -69,9 +67,10 @@ public class InitializerBean {
         us.saveUser(user3);
         us.saveUser(user4);
 
-        Relationship relationship1 = new Relationship(user1, user2);
-        Relationship relationship2 = new Relationship(user1, user3);
-        Relationship relationship3 = new Relationship(user2, user3);
+        Relationship relationship1 = new Relationship(user1, squad);
+        relationship1.setStatus(RelationshipStatusEnum.ACCEPTED);
+        Relationship relationship2 = new Relationship(user1, squad2);
+        Relationship relationship3 = new Relationship(user2, squad);
 
         rs.save(relationship1);
         rs.save(relationship2);

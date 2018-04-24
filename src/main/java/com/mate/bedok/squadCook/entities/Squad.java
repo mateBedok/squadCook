@@ -1,6 +1,7 @@
 package com.mate.bedok.squadCook.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,6 +23,9 @@ public class Squad {
 
     @ManyToMany(mappedBy = "followedSquads")
     private Set<User> followers;
+
+    @OneToMany(mappedBy = "sentToId")
+    List<Relationship> sentToRelationships;
 
     public Squad() {
     }

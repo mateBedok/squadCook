@@ -1,14 +1,9 @@
 package com.mate.bedok.squadCook.controller;
 
-import com.mate.bedok.squadCook.Utils.JSONUtil;
-import com.mate.bedok.squadCook.entities.Comment;
 import com.mate.bedok.squadCook.entities.MainFeedPost;
 import com.mate.bedok.squadCook.entities.Squad;
 import com.mate.bedok.squadCook.entities.User;
-import com.mate.bedok.squadCook.services.CommentService;
-import com.mate.bedok.squadCook.services.MainFeedPostService;
-import com.mate.bedok.squadCook.services.SquadService;
-import com.mate.bedok.squadCook.services.UserService;
+import com.mate.bedok.squadCook.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +28,9 @@ public class MainFeedController {
 
     @Autowired
     private SquadService squadService;
+
+    @Autowired
+    private RelationshipService relationshipService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexPageView(Model model, HttpServletRequest request) {
@@ -110,8 +108,13 @@ public class MainFeedController {
 
     @RequestMapping(value = "/requestSquadJoin", method = RequestMethod.POST)
     @ResponseBody
-    public String requestSquadJoin(@RequestBody Map<String, String> commentData, HttpServletRequest request) {
-        squadService.requestJoin();
+    public String requestSquadJoin(@RequestBody Map<String, String> requestData, HttpServletRequest request) {
+        User user = userService.getCurrentUser(request);
+        relationshipService.requestJoin(
+                user,
+                Long.valueOf(requestData.get("squadId")),
+                squadService
+        );
         return "success";
     }
 
@@ -123,7 +126,9 @@ public class MainFeedController {
 
         model.addAttribute("userFullName", userFullName);
         model.addAttribute("profileImage", user.getProfileImage());
-        model.addAttribute("joinedSquads", user.getSquads());
+        model.addAttribute("activeRelationship", squadService.activeSquadFirends(relationshipService, user));
+        model.addAttribute("pendingRelationship", squadService.pendingSquadFirends(relationshipService, user));
+
     }
 
     private void addModelInfoToIndexPage(Model model, HttpServletRequest request) {

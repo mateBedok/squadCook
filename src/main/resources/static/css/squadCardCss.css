@@ -6,8 +6,8 @@
     margin: 10px auto;
     margin-left: 40px;
     height: auto;
-    width: 232px;
-    min-width: 230px;
+    width: 180px;
+    min-width: 180px;
     max-width: 360px;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -31,8 +31,8 @@
 }
 .my-profile-page .img-profile .profile-bg {
 
-    width: 230px;
-    height: 200px;
+    width: 179px;
+    height: 100px;
     background-size: cover;
 }
 .my-profile-page .img-profile .avatar {
@@ -42,8 +42,8 @@
     border-radius: 100%;
     margin-top: -80px;
     background: #f8f7f5;
-    width: 130px;
-    height: 130px;
+    width: 90px;
+    height: 90px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 }
 .my-profile-page .join-button {
@@ -53,7 +53,7 @@
     border: 1px solid #818283;
     border-radius: 3px;
     padding: 10px;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 400;
     text-transform: uppercase;
     cursor: pointer;
@@ -65,7 +65,6 @@
 
     color: #424242;
     background: #f0f0f0;
-    font-size: 10px;
 }
 .my-profile-page .profile-data {
 
@@ -76,7 +75,7 @@
     margin-top: 7px;
     margin-bottom: 5px;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 300;
     color: #424242;
 }
@@ -86,7 +85,7 @@
     margin-bottom: 15px;
     color: #a9a9a9;
     font-family: "Lato", sans-serif;
-    font-size: 15px;
+    font-size: 10px;
 }
 .my-profile-page .follow {
 
@@ -123,12 +122,12 @@
 }
 .my-profile-page .follow li a strong {
 
-    font-size: 18px;
+    font-size: 12px;
 }
 .squad-card-divider {
 
     border-top: 1px solid #f0f0f0;
-    margin: 10px 30px -10px;
+    margin: 10px 4px -10px;
     width: 169px;
     height: 1px;
 }

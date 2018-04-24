@@ -45,9 +45,6 @@ public class User {
     @OneToMany(mappedBy = "sentById")
     List<Relationship> sentByRelationships;
 
-    @OneToMany(mappedBy = "sentToId")
-    List<Relationship> sentToRelationships;
-
     @OneToMany(mappedBy = "postedBy")
     List<MainFeedPost> mainFeedPosts = new ArrayList<>();
 

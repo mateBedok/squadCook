@@ -45,6 +45,7 @@
     <script src="/js/leftSideBarJs.js" defer=""></script>
     <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript" defer=""></script>
     <script src="/js/uploadJs.js" defer=""></script>
+    <script src="/js/joinFollowJs.js" defer=""></script>
 
 </head>
 <body>
@@ -61,7 +62,7 @@
 
 
         <div class="col-md-10">
-            <div class="col-md-4" th:each="squad,iterStat : ${squads}">
+            <div class="col-md-3" th:each="squad,iterStat : ${squads}">
                 <div class="content-profile-page">
                     <div class="my-profile-page card">
                         <div class="img-profile">
@@ -72,9 +73,13 @@
                         <div class="profile-data">
                             <h1 th:text="${squad.getSquadName()}"></h1>
                             <p th:text="${squad.getSquadDescription()}"></p>
-                            <button class="joined-button" th:if="${joinedSquads.contains(squad)}">Joined</button>
-                            <button class="join-button" th:unless="${joinedSquads.contains(squad)}">Join</button>
-                            <button class="join-button">Follow</button>
+                            <form id="join-follow-form">
+                                <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Joined</button>
+                                <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton'}">Join</button>
+                                <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Requested</button>
+
+                                <button th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button followButton'}">Follow</button>
+                            </form>
                         </div>
                         <hr class="squad-card-divider"/>
                         <ul class="follow">
@@ -85,7 +90,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="content-profile-page">
                     <div class="my-profile-page card">
                         <div class="img-profile">

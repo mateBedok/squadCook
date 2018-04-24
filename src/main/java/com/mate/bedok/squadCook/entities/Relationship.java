@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(
         uniqueConstraints = {@UniqueConstraint(columnNames = {
-                "sent_by_id_user_id", "sent_to_id_user_id"
+                "sent_by_id_user_id", "sent_to_id_squad_id"
         })}
 )
 public class Relationship {
@@ -18,7 +18,7 @@ public class Relationship {
     private User sentById;
 
     @ManyToOne
-    private User sentToId;
+    private Squad sentToId;
 
     @Enumerated(EnumType.STRING)
     private RelationshipStatusEnum status;
@@ -26,7 +26,7 @@ public class Relationship {
     public Relationship() {
     }
 
-    public Relationship(User sentById, User sentToId) {
+    public Relationship(User sentById, Squad sentToId) {
         this.sentById = sentById;
         this.sentToId = sentToId;
         this.status = RelationshipStatusEnum.PENDING;
@@ -48,11 +48,11 @@ public class Relationship {
         this.sentById = sentById;
     }
 
-    public User getSentToId() {
+    public Squad getSentToId() {
         return sentToId;
     }
 
-    public void setSentToId(User sentToId) {
+    public void setSentToId(Squad sentToId) {
         this.sentToId = sentToId;
     }
 
