@@ -74,8 +74,8 @@
                             <h1 th:text="${squad.getSquadName()}"></h1>
                             <p th:text="${squad.getSquadDescription()}"></p>
                             <form id="join-follow-form">
-                                <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Joined</button>
-                                <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton'}">Join</button>
+                                <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton joinedButton' + squad.getSquadId()}">Joined</button>
+                                <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton joinButton' + squad.getSquadId()}">Join</button>
                                 <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Requested</button>
 
                                 <button th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button followButton'}">Follow</button>

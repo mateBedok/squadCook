@@ -19,10 +19,9 @@ public class Squad {
     //private Set<User> admins;
 
     @ManyToMany(mappedBy = "squads")
-    private Set<User> members;
+    private Set<User> admins;
 
-    @ManyToMany(mappedBy = "followedSquads")
-    private Set<User> followers;
+
 
     @OneToMany(mappedBy = "sentToId")
     List<Relationship> sentToRelationships;
@@ -30,11 +29,11 @@ public class Squad {
     public Squad() {
     }
 
-    public Squad(String squadName, String squadDescription, Set<User> members, Set<User> followers) {
+    //TODO set creating user as admin..admin roles
+    public Squad(String squadName, String squadDescription, Set<User> admins) {
         this.squadName = squadName;
         this.squadDescription = squadDescription;
-        this.members = members;
-        this.followers = followers;
+        this.admins = admins;
     }
 
     public Squad(String squadName, String squadDescription, String squadImage) {
@@ -67,24 +66,16 @@ public class Squad {
         this.squadDescription = squadDescription;
     }
 
-    public Set<User> getMembers() {
-        return members;
+    public Set<User> getAdmins() {
+        return admins;
     }
 
-    public void setMembers(Set<User> members) {
-        this.members = members;
-    }
-
-    public Set<User> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(Set<User> followers) {
-        this.followers = followers;
+    public void setAdmins(Set<User> admins) {
+        this.admins = admins;
     }
 
     public int getMembersCount() {
-        return members.size();
+        return admins.size();
     }
 
     public String getSquadImage() {

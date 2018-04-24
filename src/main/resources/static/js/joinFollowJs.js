@@ -1,8 +1,23 @@
 
+const responseHandler = {
+
+    successSaveRequestJoin: function (response) {
+
+        var joinButtonClass = '.joinButton' + response.squadId;
+        $(joinButtonClass).html('Requested');
+        $(joinButtonClass).attr('class', 'relationship-button joined-button joinedButton joinedButton' + response.squadId);
+
+    },
+
+    errorSaveRequestJoin: function (response) {
+        //TODO
+    }
+};
+
 function requestSquadJoin(){
     $('.joinButton').on('click', function (event) {
         event.preventDefault();
-        console.log("clicked")
+        console.log("clicked");
         var squadId = $(this).attr('id');
 
         let returnData = {
@@ -13,9 +28,9 @@ function requestSquadJoin(){
             url: '/requestSquadJoin',
             type: 'POST',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify(returnData)
-            /*success: responseHandler.successSaveRequestJoin(returnData),
-            error: responseHandler.errorSaveRequestJoin()*/
+            data: JSON.stringify(returnData),
+            success: responseHandler.successSaveRequestJoin(returnData),
+            error: responseHandler.errorSaveRequestJoin()
         })
     })
 }
