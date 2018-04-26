@@ -73,9 +73,9 @@
                             <div id="post-img-container"></div>
 
                                 <div class="panel-body">
-                                    <textarea class="form-control textarea_post" name="postDescription" rows="2" placeholder="What are you thinking?"></textarea>
+                                    <textarea class="form-control textarea_post font-sys-ui" name="postDescription" rows="2" placeholder="What are you thinking?"></textarea>
                                     <div class="mar-top clearfix">
-                                        <button class="btn btn-sm btn-default btn-hover-primary pull-right" type="submit"><i class="far fa-share-square"></i> Share</button>
+                                        <button class="btn btn-sm btn-default btn-hover-primary pull-right font-sys-ui" type="submit"><i class="far fa-share-square"></i> Share</button>
                                         <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
                                         <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" id="uploadButton"></a>
                                         <a class="btn btn-trans btn-icon fa fa-file add-tooltip uploadButton" href="#"></a>
@@ -88,7 +88,7 @@
                     <div class="col-md-4">
                         <div class="panel panel-white post panel-shadow">
                             <div class="panel-body">
-                                <label for="ingredientsContent">What are the ingredients?</label>
+                                <label class="font-sys-ui" for="ingredientsContent">What are the ingredients?</label>
                                 <textarea class="form-control textarea_post" name="ingredientsContent" id="ingredientsContent" rows="3" placeholder="What are the ingredients?">- </textarea>
                             </div>
                         </div>
@@ -106,12 +106,12 @@
                                 <a class="media-left" href="#"><img class="img-circle img-sm img-box circle" alt="Profile Picture" th:src="${feedPost.getPostedBy().getProfileImage()}" src="http://i.pravatar.cc/80"/></a>
                                 <div class="media-body">
                                     <div class="mar-btm">
-                                        <a href="#" class="btn-link text-semibold media-heading box-inline" th:text="${feedPost.getPostedBy().getFirstName() + ' ' + feedPost.getPostedBy().getLastName()}">John Doe</a>
+                                        <a href="#" class="btn-link text-semibold media-heading box-inline font-sys-ui" th:text="${feedPost.getPostedBy().getFirstName() + ' ' + feedPost.getPostedBy().getLastName()}">John Doe</a>
                                         <p class="text-muted text-sm"><i class="fas fa-mobile-alt"></i> - From Mobile - 11 min ago</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="description more-data item text-justify" id="moreData" th:text="${feedPost.getDescription()}">Lorem ipsum dolor sit amet.</div>
+                            <div class="description more-data item text-justify font-sys-ui" id="moreData" th:text="${feedPost.getDescription()}">Lorem ipsum dolor sit amet.</div>
 
                             <div id="postImage" th:if="${feedPost.getImgUrl()}">
                                 <a href="#" data-toggle="modal" th:attr="data-target='#dialog' + ${feedPost.getId()}">
@@ -141,8 +141,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-body active">
-                                                <img th:src="${feedPost.getImgUrl()}" class="img-responsive img-rounded center-block img-box" alt="" />
+                                            <div class="modal-body active text-center">
+                                                <img th:src="${feedPost.getImgUrl()}" class="img-responsive img-rounded center-block img-box modal-img" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -179,10 +179,10 @@
                                                     <a class="media-left" href="#"><img class="img-circle img-sm img-box circle" alt="Profile Picture" th:src="${comment.getCommentedBy().getProfileImage()}"/></a>
                                                     <div class="media-body">
                                                         <div class="mar-btm">
-                                                            <a href="#" class="btn-link text-semibold media-heading box-inline" th:text="${comment.getCommentedBy().getFirstName() + ' ' + comment.getCommentedBy().getLastName()}">Attila Hódi</a>
+                                                            <a href="#" class="btn-link text-semibold media-heading box-inline font-sys-ui" th:text="${comment.getCommentedBy().getFirstName() + ' ' + comment.getCommentedBy().getLastName()}">Attila Hódi</a>
                                                             <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 1 min ago</p>
                                                         </div>
-                                                        <p th:text="${comment.getCommentContent()}">Looks delicious, wanna eat em all!</p>
+                                                        <p class="font-sys-ui" th:text="${comment.getCommentContent()}">Looks delicious, wanna eat em all!</p>
                                                 <!-- Like heart -->
                                                         <div class="like-heart">
                                                             <i th:id="${'like' + feedPost.getId()}" class="far fa-heart like"></i>
@@ -204,7 +204,7 @@
                                             <span class="comment-img-container"><img class="img-circle img-sm img-box circle comment-img" alt="Profile Picture" th:src="${profileImage}"/></span><input name="commentContent" th:id="${'commentContent' + feedPost.getId()}" class="form-control comment-textarea" type="text" placeholder="Write a comment.." />
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" th:id="${feedPost.getId()}" class="commentBtn">Comment</button>
+                                            <button type="submit" th:id="${feedPost.getId()}" class="commentBtn font-sys-ui">Comment</button>
                                         </div>
                                     </form>
                                 </div>
@@ -219,10 +219,10 @@
                 <div class="col-md-4">
                     <div th:if="${feedPost.getRecipe()}" class="panel panel-white post panel-shadow">
                         <div class="panel-body">
-                            <div class="ingredients-header text-center">Ingredients</div>
+                            <div class="ingredients-header text-center font-sys-ui">Ingredients</div>
                             <hr/>
                             <ul class="ingr-outer">
-                                <li class="ingredientsDisplay" th:each="ingredient,iterStat : ${feedPost.getSeparatedIngredients(feedPost.getRecipe())}" th:text="${ingredient}"></li>
+                                <li class="ingredientsDisplay font-sys-ui" th:each="ingredient,iterStat : ${feedPost.getSeparatedIngredients(feedPost.getRecipe())}" th:text="${ingredient}"></li>
                             </ul>
                         </div>
                     </div>

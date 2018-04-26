@@ -41,19 +41,19 @@ public class InitializerBean {
 
 
 
-        Squad squad = new Squad("Fioklakók", "Az anyad picsajat feljossz hozzank zabalni te mocskos allat a isten baszon meg teged", "https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/12/31/15/friends-0.jpg");
-        Squad squad2 = new Squad("A pusztító", "Az anyad2", "http://i0.kym-cdn.com/entries/icons/mobile/000/014/591/GS5mY6x.jpg");
-        Squad squad3 = new Squad("Fiok3", "Az anyad3", "https://i.pinimg.com/originals/08/ff/ca/08ffcaef9069817768902ab630323958.jpg");
-        Squad squad4 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad5 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad6 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad7 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad8 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad9 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad10 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad11 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad12 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
-        Squad squad13 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad = new Squad("Fióklakók", "Az anyad picsajat feljossz hozzank zabalni te mocskos allat a isten baszon meg teged", "https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/12/31/15/friends-0.jpg");
+        Squad squad2 = new Squad("The Recon Crew", "Az anyad2", "http://i0.kym-cdn.com/entries/icons/mobile/000/014/591/GS5mY6x.jpg");
+        Squad squad3 = new Squad("The Wolf Squadron", "Az anyad3", "https://i.pinimg.com/originals/08/ff/ca/08ffcaef9069817768902ab630323958.jpg");
+        Squad squad4 = new Squad("The Feral Squad", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad5 = new Squad("The Angels", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad6 = new Squad("The White Skulls", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad7 = new Squad("Extreme Training Squad", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad8 = new Squad("Special Rescue Unit", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad9 = new Squad("Specialized Unit", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad10 = new Squad("Emergency Task Crew", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad11 = new Squad("The Ghosts", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad12 = new Squad("Special Liberation Unit", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad13 = new Squad("The Turtles", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
 
 
         Set<Squad> squads = new HashSet<>();

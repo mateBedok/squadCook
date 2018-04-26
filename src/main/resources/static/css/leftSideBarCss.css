@@ -26,10 +26,17 @@
 .lefSideBarMenu {
     font-size: 20px;
     margin-bottom: 22px;
+    font-family: system-ui, serif;
 }
 
-a {
+
+.lefSideBarMenu a {
     color: #5d5959;
+}
+
+.lefSideBarMenu a:hover {
+    color: #000000;
+    text-decoration: none;
 }
 
 .sidebar-img {

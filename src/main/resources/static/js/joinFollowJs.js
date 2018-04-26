@@ -5,7 +5,7 @@ const responseHandler = {
 
         var joinButtonClass = '.joinButton' + response.squadId;
         $(joinButtonClass).html('Requested');
-        $(joinButtonClass).attr('class', 'relationship-button joined-button joinedButton joinedButton' + response.squadId);
+        $(joinButtonClass).attr('class', 'font-sys-ui joined-button joinedButton joinedButton' + response.squadId);
 
     },
 

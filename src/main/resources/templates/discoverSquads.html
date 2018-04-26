@@ -60,37 +60,35 @@
         <!-- Left sidebar-->
         <div th:replace="leftSideBar :: copy"></div>
 
-        <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-6" th:each="squad,iterStat : ${squads}">
-                    <div class="panel panel-white post panel-shadow">
-                        <div class="panel-body squad-card">
-                            <div class="row">
-                                <div class="squad-profile-img-container col-xs-2">
-                                    <img class="squad-profile-img" th:src="${squad.getSquadImage()}" alt="profilpic"/>
-                                </div>
-                                <div class="profile-data">
+        <div class="col-md-8">
+            <div class="panel panel-white post panel-shadow">
+                <div class="panel-body">
+                    <div class="squad-info" th:each="squad,iterStat : ${squads}">
+                        <div class="row">
+                            <div class="squad-profile-img-container col-xs-2">
+                                <img class="squad-profile-img" th:src="${squad.getSquadImage()}" alt="profilpic"/>
+                            </div>
+                            <div class="profile-data">
 
-                                    <div class="text-left col-xs-3 squad-name" th:text="${squad.getSquadName()}"></div>
-                                    <div class="text-center col-xs-2 squad-description" th:text="${squad.getSquadDescription()}"></div>
-                                    <form class="text-right col-xs-5" id="join-follow-form">
-                                        <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton joinedButton' + squad.getSquadId()}">Joined</button>
-                                        <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton joinButton' + squad.getSquadId()}">Join</button>
-                                        <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Requested</button>
+                                <div class="text-left col-xs-2 squad-name font-sys-ui" th:text="${squad.getSquadName()}"></div>
+                                <div class="col-xs-4 text-justify font-sys-ui" th:text="${squad.getSquadDescription()}"></div>
+                                <form class="text-right col-xs-4" id="join-follow-form">
+                                    <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'font-sys-ui joined-button joinedButton joinedButton' + squad.getSquadId()}">Joined</button>
+                                    <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'font-sys-ui join-button joinButton joinButton' + squad.getSquadId()}">Join</button>
+                                    <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'font-sys-ui joined-button joinedButton'}">Requested</button>
 
-                                        <button th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button followButton'}">Follow</button>
-                                    </form>
+                                    <button th:id="${squad.getSquadId()}" th:class="${'font-sys-ui join-button followButton'}">Follow</button>
+                                </form>
 
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
 
-
+        <div th:replace="rightMessengerBar :: copy"></div>
 
 
     </div>
