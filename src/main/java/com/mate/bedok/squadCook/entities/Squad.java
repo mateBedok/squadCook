@@ -16,10 +16,10 @@ public class Squad {
     private String squadDescription;
     private String squadImage;
 
-    //private Set<User> admins;
+    //private Set<User> members;
 
     @ManyToMany(mappedBy = "squads")
-    private Set<User> admins;
+    private Set<User> members;
 
 
 
@@ -30,10 +30,10 @@ public class Squad {
     }
 
     //TODO set creating user as admin..admin roles
-    public Squad(String squadName, String squadDescription, Set<User> admins) {
+    public Squad(String squadName, String squadDescription, Set<User> members) {
         this.squadName = squadName;
         this.squadDescription = squadDescription;
-        this.admins = admins;
+        this.members = members;
     }
 
     public Squad(String squadName, String squadDescription, String squadImage) {
@@ -66,16 +66,16 @@ public class Squad {
         this.squadDescription = squadDescription;
     }
 
-    public Set<User> getAdmins() {
-        return admins;
+    public Set<User> getMembers() {
+        return members;
     }
 
-    public void setAdmins(Set<User> admins) {
-        this.admins = admins;
+    public void setMembers(Set<User> members) {
+        this.members = members;
     }
 
     public int getMembersCount() {
-        return admins.size();
+        return members.size();
     }
 
     public String getSquadImage() {

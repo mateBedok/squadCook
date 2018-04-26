@@ -31,6 +31,7 @@ public class CommentService {
         cr.save(comment);
     }
 
+    // needed for the init bean
     public void initSave(Comment comment) {
         cr.save(comment);
     }

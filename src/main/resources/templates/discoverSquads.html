@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="/css/mainFeedCss.css" />
     <link rel="stylesheet" type="text/css" href="/css/loginCss.css" />
     <link rel="stylesheet" type="text/css" href="/css/leftSideBarCss.css" />
-    <link rel="stylesheet" type="text/css" href="/css/squadCardCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/discoverSquadsCss.css" />
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ribeye"/>
 
@@ -60,59 +60,36 @@
         <!-- Left sidebar-->
         <div th:replace="leftSideBar :: copy"></div>
 
-
         <div class="col-md-10">
-            <div class="col-md-3" th:each="squad,iterStat : ${squads}">
-                <div class="content-profile-page">
-                    <div class="my-profile-page card">
-                        <div class="img-profile">
-                            <div class="profile-bg" style="background-image: url(http://i.imgur.com/jQgJQbk.jpg)">
-                            </div>
-                            <img class="avatar" th:src="${squad.getSquadImage()}" alt="profilpic"/>
-                        </div>
-                        <div class="profile-data">
-                            <h1 th:text="${squad.getSquadName()}"></h1>
-                            <p th:text="${squad.getSquadDescription()}"></p>
-                            <form id="join-follow-form">
-                                <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton joinedButton' + squad.getSquadId()}">Joined</button>
-                                <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton joinButton' + squad.getSquadId()}">Join</button>
-                                <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Requested</button>
+            <div class="row">
+                <div class="col-md-6" th:each="squad,iterStat : ${squads}">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="panel-body squad-card">
+                            <div class="row">
+                                <div class="squad-profile-img-container col-xs-2">
+                                    <img class="squad-profile-img" th:src="${squad.getSquadImage()}" alt="profilpic"/>
+                                </div>
+                                <div class="profile-data">
 
-                                <button th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button followButton'}">Follow</button>
-                            </form>
+                                    <div class="text-left col-xs-3 squad-name" th:text="${squad.getSquadName()}"></div>
+                                    <div class="text-center col-xs-2 squad-description" th:text="${squad.getSquadDescription()}"></div>
+                                    <form class="text-right col-xs-5" id="join-follow-form">
+                                        <button th:if="${activeRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton joinedButton' + squad.getSquadId()}">Joined</button>
+                                        <button type="button" th:if="${(not activeRelationship.contains(squad)) and (not pendingRelationship.contains(squad))}" th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button joinButton joinButton' + squad.getSquadId()}">Join</button>
+                                        <button th:if="${pendingRelationship.contains(squad)}" th:id="${squad.getSquadId()}" th:class="${'relationship-button joined-button joinedButton'}">Requested</button>
+
+                                        <button th:id="${squad.getSquadId()}" th:class="${'relationship-button join-button followButton'}">Follow</button>
+                                    </form>
+
+                                </div>
+                            </div>
                         </div>
-                        <hr class="squad-card-divider"/>
-                        <ul class="follow">
-                            <li class="leftfollow"><a><strong th:text="${squad.getMembersCount()}">3320</strong>Members</a></li>
-                            <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
-                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="content-profile-page">
-                    <div class="my-profile-page card">
-                        <div class="img-profile">
-                            <div class="profile-bg" style="background-image: url(http://www.icebergwatereurope.com/wp-content/uploads/2013/02/iceberg-7560701.jpg)">
-                            </div>
-                            <img class="avatar" src="/images/csakany_profile.jpg" alt="profilpic"/>
-                        </div>
-                        <div class="profile-data">
-                            <h1>FIÓKLAKÓK</h1>
-                            <p>Kápi szétbaszós geng</p>
-                            <button>Join</button>
-                            <button>Follow</button>
-                        </div>
-                        <hr class="squad-card-divider"/>
-                        <ul class="follow">
-                            <li class="leftfollow"><a><strong>3320</strong>Members</a></li>
-                            <li class="rightfollow"><a><strong>1457</strong>Followers</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
+
 
 
 

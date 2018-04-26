@@ -23,6 +23,7 @@
     background: #fff;
     border: 1px solid #a6a8a9;
     height: 100%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.075);
 }
 .my-profile-page .img-profile {
 
@@ -34,6 +35,7 @@
     width: 179px;
     height: 100px;
     background-size: cover;
+    background-color: #8f9294;
 }
 .my-profile-page .img-profile .avatar {
 

@@ -4,7 +4,9 @@ import com.mate.bedok.squadCook.entities.*;
 import com.mate.bedok.squadCook.services.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -39,19 +41,50 @@ public class InitializerBean {
 
 
 
-        Squad squad = new Squad("Fiok", "Az anyad", "https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/12/31/15/friends-0.jpg");
-        Squad squad2 = new Squad("Fiok2", "Az anyad2", "http://i0.kym-cdn.com/entries/icons/mobile/000/014/591/GS5mY6x.jpg");
+        Squad squad = new Squad("Fioklakók", "Az anyad picsajat feljossz hozzank zabalni te mocskos allat a isten baszon meg teged", "https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/12/31/15/friends-0.jpg");
+        Squad squad2 = new Squad("A pusztító", "Az anyad2", "http://i0.kym-cdn.com/entries/icons/mobile/000/014/591/GS5mY6x.jpg");
         Squad squad3 = new Squad("Fiok3", "Az anyad3", "https://i.pinimg.com/originals/08/ff/ca/08ffcaef9069817768902ab630323958.jpg");
         Squad squad4 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad5 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad6 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad7 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad8 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad9 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad10 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad11 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad12 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
+        Squad squad13 = new Squad("Fiok4", "Az anyad4", "http://i0.kym-cdn.com/photos/images/original/001/166/346/3f2.jpg");
 
+
+        Set<Squad> squads = new HashSet<>();
+        squads.add(squad);
+
+        Set<Squad> user2squads = new HashSet<>();
+        user2squads.add(squad2);
+        user2squads.add(squad3);
+        user2squads.add(squad4);
+        user2squads.add(squad5);
+        user2squads.add(squad6);
+        user2squads.add(squad7);
+
+
+        user1.setSquads(squads);
 
         ss.saveSquad(squad);
         ss.saveSquad(squad2);
         ss.saveSquad(squad3);
         ss.saveSquad(squad4);
+        ss.saveSquad(squad5);
+        ss.saveSquad(squad6);
+        ss.saveSquad(squad7);
+        ss.saveSquad(squad8);
+        ss.saveSquad(squad9);
+        ss.saveSquad(squad10);
+        ss.saveSquad(squad11);
+        ss.saveSquad(squad12);
+        ss.saveSquad(squad13);
 
 
-        /*user1.addSquad(squad);*/
 
         us.saveUser(user1);
         us.saveUser(user2);
