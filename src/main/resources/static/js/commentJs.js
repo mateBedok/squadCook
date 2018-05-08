@@ -8,10 +8,10 @@ const responseHandler = {
             '                                                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="'+ response.profileImage +'"/></a>\n' +
             '                                                <div class="media-body">\n' +
             '                                                    <div class="mar-btm">\n' +
-            '                                                        <a href="#" class="btn-link text-semibold media-heading box-inline">'+ response.userFullName +'</a>\n' +
+            '                                                        <a href="#" class="btn-link text-semibold media-heading box-inline font-sys-ui">'+ response.userFullName +'</a>\n' +
             '                                                        <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 1 min ago</p>\n' +
             '                                                    </div>\n' +
-            '                                                    <p>'+ response.commentContent + '</p>\n' +
+            '                                                    <p class="font-sys-ui">'+ response.commentContent + '</p>\n' +
             '                                                    <div>\n' +
             '                                                        <div class="like-heart">\n' +
             '                                                           <i id="like'+ response.mainFeedPostId +'" class="far fa-heart like"></i>\n' +

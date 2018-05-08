@@ -1,6 +1,7 @@
 package com.mate.bedok.squadCook.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,22 +16,24 @@ public class Squad {
     private String squadDescription;
     private String squadImage;
 
-    //private Set<User> admins;
+    //private Set<User> members;
 
     @ManyToMany(mappedBy = "squads")
     private Set<User> members;
 
-    @ManyToMany(mappedBy = "followedSquads")
-    private Set<User> followers;
+
+
+    @OneToMany(mappedBy = "sentToId")
+    List<Relationship> sentToRelationships;
 
     public Squad() {
     }
 
-    public Squad(String squadName, String squadDescription, Set<User> members, Set<User> followers) {
+    //TODO set creating user as admin..admin roles
+    public Squad(String squadName, String squadDescription, Set<User> members) {
         this.squadName = squadName;
         this.squadDescription = squadDescription;
         this.members = members;
-        this.followers = followers;
     }
 
     public Squad(String squadName, String squadDescription, String squadImage) {
@@ -69,14 +72,6 @@ public class Squad {
 
     public void setMembers(Set<User> members) {
         this.members = members;
-    }
-
-    public Set<User> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(Set<User> followers) {
-        this.followers = followers;
     }
 
     public int getMembersCount() {

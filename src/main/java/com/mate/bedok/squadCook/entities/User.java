@@ -42,6 +42,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRoleEnum userRole;
 
+    @OneToMany(mappedBy = "sentById")
+    List<Relationship> sentByRelationships;
 
     @OneToMany(mappedBy = "postedBy")
     List<MainFeedPost> mainFeedPosts = new ArrayList<>();
@@ -51,19 +53,12 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "User_Squad",
+            name = "UserAdmin_Squad",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "squad_id") }
     )
     Set<Squad> squads;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "User_FollowedSquad",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "squad_id") }
-    )
-    Set<Squad> followedSquads;
 
     public User() {
     }

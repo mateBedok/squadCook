@@ -14,6 +14,7 @@ public class MainFeedPost {
 
     @Column(length = 800)
     private String description;
+    @Column(length = 800)
     private String recipe;
     private String imgUrl;
 
